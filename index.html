@@ -7,53 +7,41 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=Quicksand:wght@300;400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --warm-cream: #F5F0E8;
-    --linen: #EDE6D8;
-    --taupe: #B8A99A;
-    --taupe-dark: #8C7B6B;
-    --sage: #A3AA97;
-    --sage-deep: #7D8572;
-    --stone: #6B6358;
-    --bark: #4A3F35;
-    --whisper: #D4C9B8;
-    --petal: #D8C4B0;
-    --shadow: rgba(74, 63, 53, 0.08);
+    --clay: #E8DDD0;
+    --raw-linen: #E2D5C3;
+    --terracotta: #C4846C;
+    --terracotta-soft: #D4A08A;
+    --burnt-sienna: #A0624E;
+    --olive: #7B8B6F;
+    --olive-deep: #5E6B52;
+    --umber: #6B5744;
+    --bark: #3E3229;
+    --mushroom: #B8A898;
+    --dried-rose: #C9A596;
+    --fern: #8E9E7E;
+    --wheat: #D6C9AE;
+    --soil: #4A3D30;
+    --shadow: rgba(62, 50, 41, 0.1);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html {
-    scroll-behavior: smooth;
-  }
+  html { scroll-behavior: smooth; }
 
   body {
-    background: var(--warm-cream);
+    background: var(--clay);
     color: var(--bark);
     font-family: 'Lora', Georgia, serif;
     overflow-x: hidden;
     min-height: 100vh;
+    cursor: default;
   }
 
-  /* Linen texture overlay */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
     background-image:
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(139, 120, 100, 0.02) 2px,
-        rgba(139, 120, 100, 0.02) 4px
-      ),
-      repeating-linear-gradient(
-        90deg,
-        transparent,
-        transparent 2px,
-        rgba(139, 120, 100, 0.015) 2px,
-        rgba(139, 120, 100, 0.015) 4px
-      );
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
     pointer-events: none;
     z-index: 0;
   }
@@ -68,37 +56,38 @@
     text-align: center;
     position: relative;
     padding: 2rem;
+    overflow: hidden;
   }
 
   .hero::before {
     content: '';
     position: absolute;
-    top: -20%;
+    top: -15%;
     right: -10%;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, var(--petal) 0%, transparent 70%);
-    opacity: 0.3;
+    background: radial-gradient(circle, var(--terracotta-soft) 0%, transparent 65%);
+    opacity: 0.2;
     border-radius: 50%;
-    animation: floatSoft 12s ease-in-out infinite;
+    animation: floatSoft 14s ease-in-out infinite;
   }
 
   .hero::after {
     content: '';
     position: absolute;
     bottom: -10%;
-    left: -5%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, var(--sage) 0%, transparent 70%);
-    opacity: 0.15;
+    left: -8%;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, var(--fern) 0%, transparent 65%);
+    opacity: 0.12;
     border-radius: 50%;
-    animation: floatSoft 15s ease-in-out infinite reverse;
+    animation: floatSoft 18s ease-in-out infinite reverse;
   }
 
   @keyframes floatSoft {
     0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(20px, -30px) scale(1.05); }
+    50% { transform: translate(15px, -25px) scale(1.04); }
   }
 
   .botanical-top, .botanical-bottom {
@@ -106,19 +95,8 @@
     opacity: 0;
     animation: fadeGrow 2s ease forwards;
   }
-
-  .botanical-top {
-    top: 6%;
-    right: 8%;
-    animation-delay: 0.8s;
-  }
-
-  .botanical-bottom {
-    bottom: 6%;
-    left: 8%;
-    animation-delay: 1.2s;
-    transform: scaleX(-1);
-  }
+  .botanical-top { top: 5%; right: 6%; animation-delay: 0.8s; }
+  .botanical-bottom { bottom: 5%; left: 6%; animation-delay: 1.2s; transform: scaleX(-1); }
 
   @keyframes fadeGrow {
     from { opacity: 0; transform: scale(0.8) rotate(-5deg); }
@@ -131,7 +109,7 @@
     font-size: 0.85rem;
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    color: var(--sage-deep);
+    color: var(--olive-deep);
     margin-bottom: 2rem;
     opacity: 0;
     animation: riseIn 1.2s ease forwards 0.3s;
@@ -151,14 +129,14 @@
   .hero-title em {
     font-style: italic;
     font-weight: 400;
-    color: var(--taupe-dark);
+    color: var(--burnt-sienna);
   }
 
   .hero-name {
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-weight: 500;
     font-size: clamp(1.3rem, 3.5vw, 2.2rem);
-    color: var(--sage-deep);
+    color: var(--olive-deep);
     letter-spacing: 0.08em;
     opacity: 0;
     animation: riseIn 1.4s ease forwards 0.9s;
@@ -171,10 +149,7 @@
     position: absolute;
     bottom: 3rem;
   }
-
-  .scroll-hint svg {
-    animation: bobDown 2.5s ease-in-out infinite;
-  }
+  .scroll-hint svg { animation: bobDown 2.5s ease-in-out infinite; }
 
   @keyframes bobDown {
     0%, 100% { transform: translateY(0); }
@@ -194,22 +169,14 @@
     gap: 1.5rem;
     padding: 1rem 2rem;
   }
+  .divider-line { flex: 0 1 120px; height: 1px; background: var(--mushroom); }
+  .divider svg { flex-shrink: 0; }
 
-  .divider-line {
-    flex: 0 1 120px;
-    height: 1px;
-    background: var(--whisper);
-  }
-
-  .divider svg {
-    flex-shrink: 0;
-  }
-
-  /* ── POEM SECTION ── */
+  /* ── POEM ── */
   .poem-section {
     max-width: 680px;
     margin: 0 auto;
-    padding: 4rem 2rem 6rem;
+    padding: 4rem 2rem 5rem;
     text-align: center;
     position: relative;
   }
@@ -220,7 +187,7 @@
     font-size: 0.75rem;
     letter-spacing: 0.4em;
     text-transform: uppercase;
-    color: var(--sage-deep);
+    color: var(--olive-deep);
     margin-bottom: 2.5rem;
   }
 
@@ -229,17 +196,11 @@
     font-weight: 400;
     font-size: clamp(1.15rem, 2.5vw, 1.45rem);
     line-height: 2;
-    color: var(--stone);
+    color: var(--umber);
     font-style: italic;
   }
-
-  .poem .stanza {
-    margin-bottom: 2.2em;
-  }
-
-  .poem .stanza:last-child {
-    margin-bottom: 0;
-  }
+  .poem .stanza { margin-bottom: 2.2em; }
+  .poem .stanza:last-child { margin-bottom: 0; }
 
   .poem-attribution {
     margin-top: 2.5rem;
@@ -247,12 +208,220 @@
     font-weight: 400;
     font-size: 0.85rem;
     letter-spacing: 0.15em;
-    color: var(--taupe);
+    color: var(--mushroom);
   }
 
-  /* ── MESSAGE SECTION ── */
+  /* ── BLOOM FLOWER ── */
+  .bloom-section {
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  .bloom-prompt {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 300;
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--olive-deep);
+    margin-bottom: 2rem;
+  }
+
+  .bloom-container {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    margin: 0 auto;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .bloom-svg {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.4s ease;
+  }
+
+  .bloom-container:hover .bloom-svg { transform: scale(1.05); }
+
+  .bloom-petal-group {
+    transform-origin: 110px 110px;
+    transition: all 1.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .bloom-svg.closed .bloom-petal-group { transform: scale(0.15) rotate(90deg); opacity: 0; }
+  .bloom-svg.open .bloom-petal-group { transform: scale(1) rotate(0deg); opacity: 1; }
+
+  .bloom-center { transition: all 1s ease 0.3s; }
+  .bloom-svg.closed .bloom-center { r: 18; fill: var(--olive); }
+  .bloom-svg.open .bloom-center { r: 14; fill: var(--terracotta); }
+
+  .bloom-message {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--burnt-sienna);
+    margin-top: 1.5rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.8s ease;
+    min-height: 2em;
+  }
+
+  .bloom-message.show { opacity: 1; transform: translateY(0); }
+
+  /* ── FLIP CARDS ── */
+  .cards-section {
+    padding: 3rem 1.5rem 5rem;
+    text-align: center;
+  }
+
+  .cards-label {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 300;
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--olive-deep);
+    margin-bottom: 2rem;
+  }
+
+  .cards-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .flip-card {
+    width: 200px;
+    height: 140px;
+    perspective: 800px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+  }
+
+  .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.2rem;
+  }
+
+  .flip-card-front {
+    background: linear-gradient(145deg, var(--raw-linen), var(--wheat));
+    border: 1px solid var(--mushroom);
+    box-shadow: 0 4px 20px var(--shadow);
+  }
+
+  .flip-card-front svg { margin-bottom: 0.6rem; opacity: 0.5; }
+
+  .flip-card-front span {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 300;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--umber);
+    opacity: 0.6;
+  }
+
+  .flip-card-back {
+    background: linear-gradient(145deg, var(--terracotta-soft), var(--dried-rose));
+    border: 1px solid var(--terracotta);
+    transform: rotateY(180deg);
+    box-shadow: 0 4px 20px var(--shadow);
+  }
+
+  .flip-card-back p {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--soil);
+    text-align: center;
+  }
+
+  /* ── DANDELION WISH ── */
+  .dandelion-section {
+    padding: 4rem 2rem 5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .dandelion-prompt {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 300;
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--olive-deep);
+    margin-bottom: 0.8rem;
+  }
+
+  .dandelion-sub {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--mushroom);
+    margin-bottom: 2.5rem;
+  }
+
+  .dandelion-container {
+    position: relative;
+    width: 160px;
+    height: 240px;
+    margin: 0 auto;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .dandelion-svg { width: 100%; height: 100%; }
+
+  .seed-group {
+    transition: all 2s ease;
+    transform-origin: center;
+  }
+
+  .seed-group.blown {
+    opacity: 0;
+    transform: translate(var(--tx), var(--ty)) rotate(var(--rot));
+  }
+
+  .dandelion-wish-text {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--burnt-sienna);
+    margin-top: 2rem;
+    opacity: 0;
+    transition: all 1s ease 1.5s;
+  }
+
+  .dandelion-wish-text.show { opacity: 1; }
+
+  /* ── MESSAGE ── */
   .message-section {
-    background: linear-gradient(180deg, var(--linen) 0%, var(--warm-cream) 100%);
+    background: linear-gradient(180deg, var(--raw-linen) 0%, var(--clay) 100%);
     padding: 5rem 2rem;
     position: relative;
   }
@@ -260,19 +429,17 @@
   .message-section::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 0; left: 0; right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--whisper), transparent);
+    background: linear-gradient(90deg, transparent, var(--mushroom), transparent);
   }
 
   .message-card {
     max-width: 600px;
     margin: 0 auto;
-    background: rgba(245, 240, 232, 0.7);
+    background: rgba(232, 221, 208, 0.65);
     backdrop-filter: blur(10px);
-    border: 1px solid var(--whisper);
+    border: 1px solid var(--mushroom);
     border-radius: 2px;
     padding: 3.5rem 3rem;
     text-align: center;
@@ -280,35 +447,21 @@
     position: relative;
   }
 
-  .message-card::before,
-  .message-card::after {
+  .message-card::before, .message-card::after {
     content: '';
     position: absolute;
-    width: 40px;
-    height: 40px;
-    border-color: var(--taupe);
-    opacity: 0.3;
+    width: 40px; height: 40px;
+    border-color: var(--terracotta-soft);
+    opacity: 0.35;
   }
-
-  .message-card::before {
-    top: 16px;
-    left: 16px;
-    border-top: 1px solid;
-    border-left: 1px solid;
-  }
-
-  .message-card::after {
-    bottom: 16px;
-    right: 16px;
-    border-bottom: 1px solid;
-    border-right: 1px solid;
-  }
+  .message-card::before { top: 16px; left: 16px; border-top: 1px solid; border-left: 1px solid; }
+  .message-card::after { bottom: 16px; right: 16px; border-bottom: 1px solid; border-right: 1px solid; }
 
   .message-card h2 {
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-weight: 400;
     font-size: 1.6rem;
-    color: var(--taupe-dark);
+    color: var(--burnt-sienna);
     margin-bottom: 1.5rem;
   }
 
@@ -317,7 +470,7 @@
     font-weight: 400;
     font-size: 1rem;
     line-height: 1.9;
-    color: var(--stone);
+    color: var(--umber);
   }
 
   .heart-flourish {
@@ -328,25 +481,19 @@
     gap: 0.8rem;
   }
 
-  .heart-flourish span {
-    width: 60px;
-    height: 1px;
-    background: var(--whisper);
-    display: block;
-  }
+  .heart-flourish span { width: 60px; height: 1px; background: var(--mushroom); display: block; }
 
   /* ── FOOTER ── */
   .footer {
     text-align: center;
     padding: 4rem 2rem 3rem;
-    position: relative;
   }
 
   .footer-text {
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: clamp(1.8rem, 4vw, 2.8rem);
     font-weight: 300;
-    color: var(--taupe);
+    color: var(--terracotta-soft);
     font-style: italic;
   }
 
@@ -355,8 +502,22 @@
     font-weight: 300;
     font-size: 0.7rem;
     letter-spacing: 0.4em;
-    color: var(--whisper);
+    color: var(--mushroom);
     margin-top: 2rem;
+  }
+
+  /* ── TOUCH TRAIL ── */
+  .touch-bloom {
+    position: fixed;
+    pointer-events: none;
+    z-index: 999;
+    animation: bloomPop 1.2s ease forwards;
+  }
+
+  @keyframes bloomPop {
+    0% { opacity: 0.8; transform: scale(0) rotate(0deg); }
+    50% { opacity: 0.6; transform: scale(1.2) rotate(90deg); }
+    100% { opacity: 0; transform: scale(0.6) rotate(180deg); }
   }
 
   /* ── SCROLL REVEAL ── */
@@ -365,18 +526,12 @@
     transform: translateY(40px);
     transition: opacity 0.9s ease, transform 0.9s ease;
   }
-
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
 
   /* ── FLOATING PETALS ── */
   .petal {
     position: fixed;
-    width: 8px;
-    height: 8px;
-    background: var(--petal);
+    width: 8px; height: 8px;
     border-radius: 50% 50% 50% 0;
     opacity: 0;
     pointer-events: none;
@@ -386,8 +541,8 @@
 
   @keyframes fall {
     0% { opacity: 0; transform: translateX(0) rotate(0deg); }
-    10% { opacity: 0.25; }
-    90% { opacity: 0.15; }
+    10% { opacity: 0.2; }
+    90% { opacity: 0.1; }
     100% { opacity: 0; transform: translateX(80px) rotate(360deg); }
   }
 
@@ -395,37 +550,37 @@
     .message-card { padding: 2.5rem 1.8rem; }
     .botanical-top, .botanical-bottom { display: none; }
     .poem { font-size: 1.1rem; line-height: 1.9; }
+    .flip-card { width: 160px; height: 120px; }
+    .flip-card-back p { font-size: 0.85rem; }
+    .cards-grid { gap: 0.8rem; }
   }
 </style>
 </head>
 <body>
 
-<!-- Floating petals -->
 <div id="petals-container"></div>
 
 <!-- HERO -->
 <section class="hero">
-  <!-- Botanical SVG: top right -->
   <div class="botanical-top">
-    <svg width="120" height="140" viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M60 140 C60 140 60 80 60 60 C60 40 40 10 20 5 C40 20 50 45 55 60" stroke="#A3AA97" stroke-width="1" fill="none" opacity="0.5"/>
-      <path d="M60 140 C60 140 60 80 60 50 C60 30 80 5 100 0 C80 15 70 40 65 55" stroke="#A3AA97" stroke-width="1" fill="none" opacity="0.5"/>
-      <path d="M60 140 C60 140 60 90 60 70 C55 50 30 30 10 35 C30 40 50 55 57 70" stroke="#B8A99A" stroke-width="1" fill="none" opacity="0.35"/>
-      <path d="M60 140 C60 140 60 90 60 70 C65 50 90 30 110 35 C90 40 70 55 63 70" stroke="#B8A99A" stroke-width="1" fill="none" opacity="0.35"/>
-      <ellipse cx="20" cy="5" rx="12" ry="18" transform="rotate(-20 20 5)" fill="#A3AA97" opacity="0.12"/>
-      <ellipse cx="100" cy="0" rx="12" ry="18" transform="rotate(20 100 0)" fill="#A3AA97" opacity="0.12"/>
-      <ellipse cx="10" cy="35" rx="10" ry="15" transform="rotate(-40 10 35)" fill="#B8A99A" opacity="0.08"/>
-      <ellipse cx="110" cy="35" rx="10" ry="15" transform="rotate(40 110 35)" fill="#B8A99A" opacity="0.08"/>
+    <svg width="130" height="150" viewBox="0 0 130 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M65 150 C65 150 65 85 65 65 C65 42 42 10 20 5 C42 22 55 48 60 65" stroke="#7B8B6F" stroke-width="1.2" fill="none" opacity="0.5"/>
+      <path d="M65 150 C65 150 65 85 65 55 C65 32 88 5 110 0 C88 17 75 43 70 58" stroke="#7B8B6F" stroke-width="1.2" fill="none" opacity="0.5"/>
+      <path d="M65 150 C65 150 65 95 65 75 C60 52 32 32 10 38 C32 43 55 60 62 75" stroke="#C4846C" stroke-width="1" fill="none" opacity="0.3"/>
+      <path d="M65 150 C65 150 65 95 65 75 C70 52 98 32 120 38 C98 43 75 60 68 75" stroke="#C4846C" stroke-width="1" fill="none" opacity="0.3"/>
+      <ellipse cx="20" cy="5" rx="14" ry="20" transform="rotate(-20 20 5)" fill="#7B8B6F" opacity="0.12"/>
+      <ellipse cx="110" cy="0" rx="14" ry="20" transform="rotate(20 110 0)" fill="#7B8B6F" opacity="0.12"/>
+      <ellipse cx="10" cy="38" rx="11" ry="16" transform="rotate(-40 10 38)" fill="#C4846C" opacity="0.08"/>
+      <ellipse cx="120" cy="38" rx="11" ry="16" transform="rotate(40 120 38)" fill="#C4846C" opacity="0.08"/>
     </svg>
   </div>
 
-  <!-- Botanical SVG: bottom left -->
   <div class="botanical-bottom">
-    <svg width="100" height="120" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M50 120 C50 120 50 70 50 50 C48 30 30 10 15 8 C30 18 42 38 48 52" stroke="#A3AA97" stroke-width="1" fill="none" opacity="0.45"/>
-      <path d="M50 120 C50 120 50 70 50 45 C52 25 70 5 85 3 C70 13 58 33 52 48" stroke="#A3AA97" stroke-width="1" fill="none" opacity="0.45"/>
-      <ellipse cx="15" cy="8" rx="10" ry="14" transform="rotate(-15 15 8)" fill="#A3AA97" opacity="0.1"/>
-      <ellipse cx="85" cy="3" rx="10" ry="14" transform="rotate(15 85 3)" fill="#A3AA97" opacity="0.1"/>
+    <svg width="110" height="130" viewBox="0 0 110 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M55 130 C55 130 55 75 55 55 C53 32 32 10 15 8 C32 20 46 42 52 58" stroke="#7B8B6F" stroke-width="1.2" fill="none" opacity="0.45"/>
+      <path d="M55 130 C55 130 55 75 55 48 C57 28 78 5 95 3 C78 15 64 37 58 52" stroke="#7B8B6F" stroke-width="1.2" fill="none" opacity="0.45"/>
+      <ellipse cx="15" cy="8" rx="12" ry="16" transform="rotate(-15 15 8)" fill="#7B8B6F" opacity="0.1"/>
+      <ellipse cx="95" cy="3" rx="12" ry="16" transform="rotate(15 95 3)" fill="#7B8B6F" opacity="0.1"/>
     </svg>
   </div>
 
@@ -434,9 +589,9 @@
   <p class="hero-name">— for Jeanne —</p>
 
   <div class="scroll-hint">
-    <svg width="24" height="32" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="1" y="1" width="22" height="30" rx="11" stroke="#B8A99A" stroke-width="1"/>
-      <circle cx="12" cy="10" r="2" fill="#B8A99A" opacity="0.5"/>
+    <svg width="24" height="32" viewBox="0 0 24 32" fill="none">
+      <rect x="1" y="1" width="22" height="30" rx="11" stroke="#B8A898" stroke-width="1"/>
+      <circle cx="12" cy="10" r="2" fill="#B8A898" opacity="0.5"/>
     </svg>
   </div>
 </section>
@@ -445,7 +600,7 @@
 <div class="divider reveal">
   <div class="divider-line"></div>
   <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-    <path d="M10 4 C10 4 6 0 3 3 C0 6 3 10 10 17 C17 10 20 6 17 3 C14 0 10 4 10 4Z" fill="#B8A99A" opacity="0.3"/>
+    <path d="M10 4 C10 4 6 0 3 3 C0 6 3 10 10 17 C17 10 20 6 17 3 C14 0 10 4 10 4Z" fill="#C4846C" opacity="0.35"/>
   </svg>
   <div class="divider-line"></div>
 </div>
@@ -485,12 +640,138 @@
 <!-- DIVIDER -->
 <div class="divider reveal">
   <div class="divider-line"></div>
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <circle cx="8" cy="8" r="3" stroke="#B8A99A" stroke-width="0.75" fill="none"/>
-    <circle cx="8" cy="8" r="1" fill="#B8A99A" opacity="0.3"/>
+  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+    <path d="M9 1 L11 7 L17 7 L12 11 L14 17 L9 13 L4 17 L6 11 L1 7 L7 7Z" fill="none" stroke="#C4846C" stroke-width="0.6" opacity="0.35"/>
   </svg>
   <div class="divider-line"></div>
 </div>
+
+<!-- BLOOM FLOWER -->
+<section class="bloom-section reveal">
+  <p class="bloom-prompt">Tap the bud to make it bloom</p>
+  <div class="bloom-container" id="bloomContainer" onclick="toggleBloom()">
+    <svg class="bloom-svg closed" id="bloomSvg" viewBox="0 0 220 220">
+      <ellipse cx="80" cy="170" rx="25" ry="8" transform="rotate(-35 80 170)" fill="#7B8B6F" opacity="0.4"/>
+      <ellipse cx="140" cy="170" rx="25" ry="8" transform="rotate(35 140 170)" fill="#7B8B6F" opacity="0.4"/>
+      <path d="M110 220 Q108 180 110 140" stroke="#5E6B52" stroke-width="2.5" fill="none" opacity="0.6"/>
+      <g class="bloom-petal-group">
+        <ellipse cx="110" cy="80" rx="18" ry="35" fill="#C4846C" opacity="0.55"/>
+        <ellipse cx="110" cy="80" rx="18" ry="35" fill="#D4A08A" opacity="0.35" transform="rotate(45 110 110)"/>
+        <ellipse cx="110" cy="80" rx="18" ry="35" fill="#C9A596" opacity="0.45" transform="rotate(90 110 110)"/>
+        <ellipse cx="110" cy="80" rx="18" ry="35" fill="#C4846C" opacity="0.4" transform="rotate(135 110 110)"/>
+        <ellipse cx="110" cy="80" rx="18" ry="35" fill="#D4A08A" opacity="0.5" transform="rotate(180 110 110)"/>
+        <ellipse cx="110" cy="80" rx="18" ry="35" fill="#C9A596" opacity="0.35" transform="rotate(225 110 110)"/>
+        <ellipse cx="110" cy="80" rx="18" ry="35" fill="#C4846C" opacity="0.45" transform="rotate(270 110 110)"/>
+        <ellipse cx="110" cy="80" rx="18" ry="35" fill="#D4A08A" opacity="0.4" transform="rotate(315 110 110)"/>
+      </g>
+      <circle class="bloom-center" cx="110" cy="110" r="18" fill="#7B8B6F"/>
+    </svg>
+  </div>
+  <p class="bloom-message" id="bloomMessage">You make the world bloom, Mom.</p>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider reveal">
+  <div class="divider-line"></div>
+  <svg width="6" height="6" viewBox="0 0 6 6"><circle cx="3" cy="3" r="2" fill="#C4846C" opacity="0.3"/></svg>
+  <div class="divider-line"></div>
+</div>
+
+<!-- FLIP CARDS -->
+<section class="cards-section reveal">
+  <p class="cards-label">Tap to reveal</p>
+  <div class="cards-grid">
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 6 C14 6 9 1 5 5 C1 9 5 15 14 24 C23 15 27 9 23 5 C19 1 14 6 14 6Z" fill="#C4846C" opacity="0.4"/></svg>
+          <span>A truth</span>
+        </div>
+        <div class="flip-card-back">
+          <p>Your laugh is still the best sound in every room.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M13 1 L15.5 9 L24 9 L17 14 L19.5 22 L13 17 L6.5 22 L9 14 L2 9 L10.5 9Z" fill="#7B8B6F" opacity="0.35"/></svg>
+          <span>A memory</span>
+        </div>
+        <div class="flip-card-back">
+          <p>You always made ordinary days feel like they mattered.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="#C4846C" stroke-width="0.8" fill="none" opacity="0.4"/><circle cx="14" cy="14" r="4" fill="#C4846C" opacity="0.2"/></svg>
+          <span>A promise</span>
+        </div>
+        <div class="flip-card-back">
+          <p>I will always find my way back to you.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider reveal">
+  <div class="divider-line"></div>
+  <svg width="6" height="6" viewBox="0 0 6 6"><circle cx="3" cy="3" r="2" fill="#7B8B6F" opacity="0.3"/></svg>
+  <div class="divider-line"></div>
+</div>
+
+<!-- DANDELION WISH -->
+<section class="dandelion-section reveal">
+  <p class="dandelion-prompt">Make a wish for Mom</p>
+  <p class="dandelion-sub">tap the dandelion</p>
+  <div class="dandelion-container" id="dandelionContainer" onclick="blowDandelion()">
+    <svg class="dandelion-svg" id="dandelionSvg" viewBox="0 0 160 240">
+      <path d="M80 240 Q78 190 80 120" stroke="#5E6B52" stroke-width="2" fill="none" opacity="0.5"/>
+      <g class="seed-group" style="--tx:-80px;--ty:-120px;--rot:-30deg">
+        <line x1="80" y1="100" x2="55" y2="55" stroke="#B8A898" stroke-width="0.6" opacity="0.6"/>
+        <circle cx="55" cy="55" r="3" fill="#D6C9AE" opacity="0.5"/>
+      </g>
+      <g class="seed-group" style="--tx:90px;--ty:-140px;--rot:25deg">
+        <line x1="80" y1="100" x2="105" y2="50" stroke="#B8A898" stroke-width="0.6" opacity="0.6"/>
+        <circle cx="105" cy="50" r="3" fill="#D6C9AE" opacity="0.5"/>
+      </g>
+      <g class="seed-group" style="--tx:-60px;--ty:-160px;--rot:-45deg">
+        <line x1="80" y1="100" x2="60" y2="40" stroke="#B8A898" stroke-width="0.6" opacity="0.6"/>
+        <circle cx="60" cy="40" r="2.5" fill="#D6C9AE" opacity="0.5"/>
+      </g>
+      <g class="seed-group" style="--tx:70px;--ty:-100px;--rot:50deg">
+        <line x1="80" y1="100" x2="100" y2="60" stroke="#B8A898" stroke-width="0.6" opacity="0.6"/>
+        <circle cx="100" cy="60" r="2.5" fill="#D6C9AE" opacity="0.5"/>
+      </g>
+      <g class="seed-group" style="--tx:10px;--ty:-180px;--rot:5deg">
+        <line x1="80" y1="100" x2="80" y2="38" stroke="#B8A898" stroke-width="0.6" opacity="0.6"/>
+        <circle cx="80" cy="38" r="3" fill="#D6C9AE" opacity="0.5"/>
+      </g>
+      <g class="seed-group" style="--tx:-100px;--ty:-90px;--rot:-60deg">
+        <line x1="80" y1="100" x2="45" y2="70" stroke="#B8A898" stroke-width="0.6" opacity="0.6"/>
+        <circle cx="45" cy="70" r="2" fill="#D6C9AE" opacity="0.5"/>
+      </g>
+      <g class="seed-group" style="--tx:110px;--ty:-110px;--rot:40deg">
+        <line x1="80" y1="100" x2="115" y2="72" stroke="#B8A898" stroke-width="0.6" opacity="0.6"/>
+        <circle cx="115" cy="72" r="2" fill="#D6C9AE" opacity="0.5"/>
+      </g>
+      <g class="seed-group" style="--tx:-40px;--ty:-190px;--rot:-15deg">
+        <line x1="80" y1="100" x2="68" y2="48" stroke="#B8A898" stroke-width="0.6" opacity="0.6"/>
+        <circle cx="68" cy="48" r="2.5" fill="#D6C9AE" opacity="0.5"/>
+      </g>
+      <g class="seed-group" style="--tx:50px;--ty:-170px;--rot:20deg">
+        <line x1="80" y1="100" x2="92" y2="44" stroke="#B8A898" stroke-width="0.6" opacity="0.6"/>
+        <circle cx="92" cy="44" r="2.5" fill="#D6C9AE" opacity="0.5"/>
+      </g>
+      <circle cx="80" cy="100" r="8" fill="#B8A898" opacity="0.4"/>
+    </svg>
+  </div>
+  <p class="dandelion-wish-text" id="dandelionWish">Wishing you every joy you've given to me.</p>
+</section>
 
 <!-- MESSAGE -->
 <section class="message-section">
@@ -505,7 +786,7 @@
     <div class="heart-flourish">
       <span></span>
       <svg width="18" height="16" viewBox="0 0 18 16" fill="none">
-        <path d="M9 3 C9 3 6 0 3 2.5 C0 5 2.5 9 9 15 C15.5 9 18 5 15 2.5 C12 0 9 3 9 3Z" fill="#A3AA97" opacity="0.4"/>
+        <path d="M9 3 C9 3 6 0 3 2.5 C0 5 2.5 9 9 15 C15.5 9 18 5 15 2.5 C12 0 9 3 9 3Z" fill="#7B8B6F" opacity="0.4"/>
       </svg>
       <span></span>
     </div>
@@ -519,46 +800,80 @@
 </section>
 
 <script>
-  // Scroll reveal
+  // ── SCROLL REVEAL ──
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.15 });
-
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Floating petals
+  // ── FLOATING PETALS ──
   function createPetal() {
-    const container = document.getElementById('petals-container');
-    const petal = document.createElement('div');
-    petal.className = 'petal';
-
+    const c = document.getElementById('petals-container');
+    const p = document.createElement('div');
+    p.className = 'petal';
     const size = 4 + Math.random() * 8;
-    const startX = Math.random() * window.innerWidth;
-    const duration = 8 + Math.random() * 12;
-    const delay = Math.random() * 5;
-    const colors = ['#D8C4B0', '#D4C9B8', '#A3AA97', '#C5B8A5'];
-
-    petal.style.cssText = `
-      left: ${startX}px;
-      top: -20px;
-      width: ${size}px;
-      height: ${size}px;
-      background: ${colors[Math.floor(Math.random() * colors.length)]};
-      animation-duration: ${duration}s;
-      animation-delay: ${delay}s;
+    const colors = ['#C4846C', '#C9A596', '#7B8B6F', '#B8A898', '#D4A08A'];
+    p.style.cssText = `
+      left:${Math.random()*innerWidth}px; top:-20px;
+      width:${size}px; height:${size}px;
+      background:${colors[Math.random()*colors.length|0]};
+      animation-duration:${8+Math.random()*12}s;
+      animation-delay:${Math.random()*5}s;
     `;
+    c.appendChild(p);
+    setTimeout(() => p.remove(), 25000);
+  }
+  setInterval(createPetal, 3500);
+  for (let i = 0; i < 4; i++) setTimeout(createPetal, i * 700);
 
-    container.appendChild(petal);
-    setTimeout(() => petal.remove(), (duration + delay) * 1000);
+  // ── TOUCH TRAIL WILDFLOWERS ──
+  let lastTrail = 0;
+  document.addEventListener('pointermove', (e) => {
+    if (Date.now() - lastTrail < 120) return;
+    lastTrail = Date.now();
+    const el = document.createElement('div');
+    el.className = 'touch-bloom';
+    const petals = 5 + (Math.random() * 3 | 0);
+    const r = 8 + Math.random() * 6;
+    const color = ['#C4846C','#7B8B6F','#D4A08A','#C9A596','#B8A898'][Math.random()*5|0];
+    let svg = `<svg width="${r*2+4}" height="${r*2+4}" viewBox="0 0 ${r*2+4} ${r*2+4}">`;
+    const cx = r+2, cy = r+2;
+    for (let i = 0; i < petals; i++) {
+      const angle = (i / petals) * Math.PI * 2;
+      const px = cx + Math.cos(angle) * r * 0.5;
+      const py = cy + Math.sin(angle) * r * 0.5;
+      svg += `<ellipse cx="${px}" cy="${py}" rx="${r*0.35}" ry="${r*0.6}" transform="rotate(${angle*180/Math.PI} ${px} ${py})" fill="${color}" opacity="0.5"/>`;
+    }
+    svg += `<circle cx="${cx}" cy="${cy}" r="${r*0.2}" fill="#D6C9AE" opacity="0.6"/></svg>`;
+    el.innerHTML = svg;
+    el.style.left = (e.clientX - r - 2) + 'px';
+    el.style.top = (e.clientY - r - 2) + 'px';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 1200);
+  });
+
+  // ── BLOOM FLOWER ──
+  let bloomed = false;
+  function toggleBloom() {
+    const svg = document.getElementById('bloomSvg');
+    const msg = document.getElementById('bloomMessage');
+    bloomed = !bloomed;
+    svg.classList.toggle('closed', !bloomed);
+    svg.classList.toggle('open', bloomed);
+    msg.classList.toggle('show', bloomed);
   }
 
-  // Create petals sparingly
-  setInterval(createPetal, 3000);
-  for (let i = 0; i < 4; i++) setTimeout(createPetal, i * 800);
+  // ── DANDELION WISH ──
+  let blown = false;
+  function blowDandelion() {
+    if (blown) return;
+    blown = true;
+    const seeds = document.querySelectorAll('.seed-group');
+    seeds.forEach((s, i) => {
+      setTimeout(() => s.classList.add('blown'), i * 120);
+    });
+    document.getElementById('dandelionWish').classList.add('show');
+  }
 </script>
 
 </body>
